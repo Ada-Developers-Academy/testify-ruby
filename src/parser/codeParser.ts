@@ -1,34 +1,20 @@
-import { parse, ParserOptions } from "@babel/parser";
+// TODO: "describe" support?
 
-const testTokens = ["describe", "it", "test"];
+const singleStringPattern = "(?:'(?:(?:[^']|\\\\')*[^\\'])')";
+const doubleStringPattern = '(?:"(?:(?:[^"]|\\\\")*[^\\"])")';
+const stringPattern = `(?:${singleStringPattern}|${doubleStringPattern})`;
+const testNamePattern = `(?:(?:[(]\\s*${stringPattern}\\s*[)])|${stringPattern})`;
+
+const itPattern = new RegExp(`\\b(it\\s*${testNamePattern})`, "g");
 
 function codeParser(sourceCode) {
-  const parserOptions: ParserOptions = {
-    plugins: ["jsx", "typescript", "objectRestSpread"],
-    sourceType: "module",
-    tokens: true
-  };
-  const ast = parse(sourceCode, parserOptions);
-
-  return ast.tokens
-    .map(({ value, loc, type }, index) => {
-      if (testTokens.indexOf(value) === -1) {
-        return;
-      }
-      if (type.label !== "name") {
-        return;
-      }
-      const nextToken = ast.tokens[index + 1];
-      if (!nextToken.type.startsExpr) {
-        return;
-      }
-
-      return {
-        loc,
-        testName: ast.tokens[index + 2].value
-      };
-    })
-    .filter(Boolean);
+  return [...sourceCode.matchAll(itPattern)].map(match => ({
+    loc: {
+      end: match.index + match[0].length,
+      start: match.index
+    },
+    testName: match[0]
+  }));
 }
 
 export { codeParser };

@@ -1,13 +1,8 @@
 # Testify
 
-[![Build Status](https://travis-ci.com/felixjb/testify.svg?branch=master)](https://travis-ci.com/felixjb/testify)
+Testify-Ruby is a Ruby test runner extension for VSCode. It adds codelenses near `describe`, and `it` keywords enabling VSCode to run associated tests and output the results in the integrated terminal.
 
-Testify is a JavaScript and Typescript test runner extension for VSCode. It adds codelens near `describe`, `it`, and `test` keywords enabling VSCode to run associated tests and output the results in the integrated terminal.
-Currently it works **out of the box** for **Mocha** and **Jest** test runner.
-
-## Demo
-
-![demo](resources/demo.gif)
+Currently it works **out of the box** for the  **TODO** test runners.
 
 ## Configuration
 
@@ -15,19 +10,18 @@ The following configuration properties are available:
 
 | Property                 | Description                                        | Example                |
 | ------------------------ | -------------------------------------------------- | ---------------------- |
-| `testify.additionalArgs` | CLI args to pass to test runner                    | "--watch"              |
-| `testify.envVars`        | Environment variables to set before running a test | { "NODE_ENV": "test" } |
+| `testify-ruby.additionalArgs` | CLI args to pass to test runner                    | "--watch"              |
+| `testify-ruby.envVars`        | Environment variables to set before running a test | { "NODE_ENV": "test" } |
 
 ## Compatibility
 
-This extension works currently with :
+This extension currently works with:
 
--   Mocha
--   Jest
+- TODO (hopefully MiniTest)
 
 ## Versioning
 
-We use [Semantic Versioning](https://semver.org/spec/v2.0.0.html) for versioning. For the versions available, see the [tags on this repository](https://github.com/felixjb/testify/tags).
+We use [Semantic Versioning](https://semver.org/spec/v2.0.0.html) for versioning. For the versions available, see the [tags on this repository](https://github.com/Ada-Developers-Academy/testify-ruby).
 Also, this project adheres to [Keep a Changelog](http://keepachangelog.com/).
 
 ## Contributing
@@ -49,9 +43,10 @@ This project follows the [all-contributors](https://github.com/kentcdodds/all-co
 
 -   **Geoffrey** - _Initial work_ - Github: [@g3offrey](https://github.com/g3offrey)
 -   **Felix J. Batista** - _Forked project_ - Github: [@felixjb](https://github.com/felixjb)
+-   **TODO** - _Forked Project_ - Github: [@Ada-Devleopers-Academy](https://github.com/Ada-Developers-Academy/)
 
-_based on [JavaScript Test Runner](https://github.com/g3offrey/javascript-test-runner) by_ **Geoffrey**
+_based on [Testify](https://github.com/felixjb/testify) by_ **Felix J. Batista**
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/felixjb/testify/blob/master/LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/Ada-Developers-Academy/testify-ruby/blob/master/LICENSE) file for details.

@@ -1,9 +1,9 @@
 {
-  "name": "testify",
-  "displayName": "Testify",
-  "description": "Run JavaScript tests easily using CodeLens",
+  "name": "testify-ruby",
+  "displayName": "Testify Ruby",
+  "description": "Run Ruby tests easily using CodeLens",
   "version": "1.1.0",
-  "publisher": "felixjb",
+  "publisher": "adadevelopersacademy",
   "engines": {
     "vscode": "^1.18.0"
   },
@@ -20,7 +20,7 @@
   "preview": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/felixjb/testify"
+    "url": "https://github.com/Ada-Developers-Academy/testify-ruby"
   },
   "icon": "resources/icon.png",
   "main": "./out/extension",
@@ -30,20 +30,20 @@
   "contributes": {
     "commands": [
       {
-        "command": "testify.run.test",
+        "command": "testify-ruby.run.test",
         "title": "Run Test"
       }
     ],
     "configuration": [
       {
         "properties": {
-          "testify.additionalArgs": {
+          "testify-ruby.additionalArgs": {
             "type": "string",
             "default": "",
             "description": "CLI args to pass to test runner.",
             "scope": "resource"
           },
-          "testify.envVars": {
+          "testify-ruby.envVars": {
             "type": "object",
             "default": {
               "NODE_ENV": "test"
@@ -89,10 +89,5 @@
     "typescript": "^2.6.1",
     "vscode": "^1.1.6"
   },
-  "dependencies": {
-    "@babel/core": "^7.0.0-beta.54",
-    "@babel/parser": "^7.0.0-beta.54",
-    "@babel/plugin-syntax-jsx": "^7.0.0-beta.54",
-    "@babel/plugin-syntax-typescript": "^7.0.0-beta.54"
-  }
+  "dependencies": {}
 }

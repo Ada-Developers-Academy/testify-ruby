@@ -1,4 +1,3 @@
-import { join } from "path";
 import { debug, WorkspaceFolder } from "vscode";
 
 import { ITestRunnerInterface } from "../interfaces/ITestRunnerInterface";
@@ -14,6 +13,10 @@ export class MinitestTestRunner implements ITestRunnerInterface {
   constructor({ terminalProvider, configurationProvider }: ITestRunnerOptions) {
     this.terminalProvider = terminalProvider;
     this.configurationProvider = configurationProvider;
+  }
+
+  get binPath(): string {
+    return null;
   }
 
   public runTest(

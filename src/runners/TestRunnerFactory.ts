@@ -22,11 +22,15 @@ async function getAvailableTestRunner(
   rootPath: WorkspaceFolder
 ): Promise<ITestRunnerInterface> {
   for (const runner of testRunners) {
-    const doesRunnerExist = await doesFileExist(
-      join(rootPath.uri.path, runner.binPath)
-    );
+    if (runner.binPath) {
+      const doesRunnerExist = await doesFileExist(
+        join(rootPath.uri.path, runner.binPath)
+      );
 
-    if (doesRunnerExist) {
+      if (doesRunnerExist) {
+        return runner;
+      }
+    } else {
       return runner;
     }
   }

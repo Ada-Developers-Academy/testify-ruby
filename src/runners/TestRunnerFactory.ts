@@ -5,8 +5,7 @@ import { WorkspaceFolder } from "vscode";
 import { ITestRunnerInterface } from "../interfaces/ITestRunnerInterface";
 import { ConfigurationProvider } from "../providers/ConfigurationProvider";
 import { TerminalProvider } from "../providers/TerminalProvider";
-import { JestTestRunner } from "./JestTestRunner";
-import { MochaTestRunner } from "./MochaTestRunner";
+import { MinitestTestRunner } from "./MinitestTestRunner";
 
 const terminalProvider = new TerminalProvider();
 
@@ -40,14 +39,10 @@ export async function getTestRunner(
 ): Promise<ITestRunnerInterface> {
   const configurationProvider = new ConfigurationProvider(rootPath);
 
-  const jestTestRunner = new JestTestRunner({
-    configurationProvider,
-    terminalProvider
-  });
-  const mochaTestRunner = new MochaTestRunner({
+  const minitestTestRunner = new MinitestTestRunner({
     configurationProvider,
     terminalProvider
   });
 
-  return getAvailableTestRunner([jestTestRunner, mochaTestRunner], rootPath);
+  return getAvailableTestRunner([minitestTestRunner], rootPath);
 }

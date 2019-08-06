@@ -6,14 +6,10 @@ import { ITestRunnerOptions } from "../interfaces/ITestRunnerOptions";
 import { ConfigurationProvider } from "../providers/ConfigurationProvider";
 import { TerminalProvider } from "../providers/TerminalProvider";
 
-export class JestTestRunner implements ITestRunnerInterface {
-  public name: string = "jest";
+export class MinitestTestRunner implements ITestRunnerInterface {
+  public name: string = "minitest";
   public terminalProvider: TerminalProvider = null;
   public configurationProvider: ConfigurationProvider = null;
-
-  get binPath(): string {
-    return join("node_modules", ".bin", "jest");
-  }
 
   constructor({ terminalProvider, configurationProvider }: ITestRunnerOptions) {
     this.terminalProvider = terminalProvider;
@@ -25,15 +21,12 @@ export class JestTestRunner implements ITestRunnerInterface {
     fileName: string,
     testName: string
   ) {
-    const additionalArguments = this.configurationProvider.additionalArguments;
     const environmentVariables = this.configurationProvider
       .environmentVariables;
     // We force slash instead of backslash for Windows
     const cleanedFileName = fileName.replace(/\\/g, "/");
 
-    const command = `${
-      this.binPath
-    } ${cleanedFileName} --testNamePattern="${testName}" ${additionalArguments}`;
+    const command = `ruby ${cleanedFileName} --name "/test_[0-9]{4}_${testName}/"`;
 
     const terminal = this.terminalProvider.get(
       { env: environmentVariables },
@@ -49,28 +42,22 @@ export class JestTestRunner implements ITestRunnerInterface {
     fileName: string,
     testName: string
   ) {
-    const additionalArguments = this.configurationProvider.additionalArguments;
     const environmentVariables = this.configurationProvider
       .environmentVariables;
     // We force slash instead of backslash for Windows
     const cleanedFileName = fileName.replace(/\\/g, "/");
 
     debug.startDebugging(rootPath, {
-      args: [
-        cleanedFileName,
-        `--testNamePattern`,
-        testName,
-        "--runInBand",
-        ...additionalArguments.split(" ")
-      ],
+      args: ["--name", `/test_[0-9]{4}_${testName}/`],
       console: "integratedTerminal",
       env: environmentVariables,
-      name: "Debug Test",
-      program: "${workspaceFolder}/node_modules/.bin/jest",
+      name: "Debug Ruby Test",
+      program: `${cleanedFileName}`,
       request: "launch",
-      type: "node",
+      type: "Ruby",
       windows: {
-        program: "${workspaceFolder}/node_modules/jest/bin/jest"
+        args: ["--name", "/test_[0-9]{4}_${testName}/"],
+        program: `${cleanedFileName}"`
       }
     });
   }

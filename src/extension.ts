@@ -13,6 +13,6 @@ export function activate(context: ExtensionContext) {
     )
   );
 
-  commands.registerCommand("testify.run.test", runTestCommand);
-  commands.registerCommand("testify.debug.test", debugTestCommand);
+  commands.registerCommand("testify-ruby.run.test", runTestCommand);
+  commands.registerCommand("testify-ruby.debug.test", debugTestCommand);
 }

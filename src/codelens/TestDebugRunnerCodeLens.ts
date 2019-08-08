@@ -9,7 +9,7 @@ export default class TestDebugRunnerCodeLens extends CodeLens {
   ) {
     super(range, {
       arguments: [rootPath, fileName, testName],
-      command: "testify.debug.test",
+      command: "testify-ruby.debug.test",
       title: "Debug Test"
     });
   }

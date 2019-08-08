@@ -12,8 +12,8 @@
     "Other"
   ],
   "keywords": [
-    "mocha",
-    "jest",
+    "ruby",
+    "minitest",
     "test",
     "unit"
   ],
@@ -22,7 +22,6 @@
     "type": "git",
     "url": "https://github.com/Ada-Developers-Academy/testify-ruby"
   },
-  "icon": "resources/icon.png",
   "main": "./out/extension",
   "activationEvents": [
     "*"

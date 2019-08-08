@@ -14,18 +14,19 @@ interface ITest {
 }
 
 function findPosition(lengths: number[], index: number): Position {
-  let line = 0;
+  // let line = 0;
 
-  for (const len of lengths) {
-    if (index < len) {
-      return new Position(line, index);
-    } else {
-      line += 1;
-      index -= len;
-    }
-  }
+  return new Position(lengths.length * 0, index * 0);
+  // for (const len of lengths) {
+  //   if (index < len) {
+  //     return new Position(line, index);
+  //   } else {
+  //     line += 1;
+  //     index -= len;
+  //   }
+  // }
 
-  throw new Error("Position does not exist in file!");
+  // throw new Error("Position does not exist in file!");
 }
 
 function codeParser(sourceCode: string): ITest[] {

@@ -3,7 +3,6 @@ import { join } from "path";
 import { WorkspaceFolder } from "vscode";
 
 import { ITestRunnerInterface } from "../interfaces/ITestRunnerInterface";
-import { ConfigurationProvider } from "../providers/ConfigurationProvider";
 import { TerminalProvider } from "../providers/TerminalProvider";
 import { MinitestTestRunner } from "./MinitestTestRunner";
 
@@ -41,10 +40,7 @@ async function getAvailableTestRunner(
 export async function getTestRunner(
   rootPath: WorkspaceFolder
 ): Promise<ITestRunnerInterface> {
-  const configurationProvider = new ConfigurationProvider(rootPath);
-
   const minitestTestRunner = new MinitestTestRunner({
-    configurationProvider,
     terminalProvider
   });
 

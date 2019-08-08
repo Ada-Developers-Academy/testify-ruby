@@ -31,26 +31,10 @@
       {
         "command": "testify-ruby.run.test",
         "title": "Run Test"
-      }
-    ],
-    "configuration": [
+      },
       {
-        "properties": {
-          "testify-ruby.additionalArgs": {
-            "type": "string",
-            "default": "",
-            "description": "CLI args to pass to test runner.",
-            "scope": "resource"
-          },
-          "testify-ruby.envVars": {
-            "type": "object",
-            "default": {
-              "NODE_ENV": "test"
-            },
-            "description": "Environment variables to set before running a test.",
-            "scope": "resource"
-          }
-        }
+        "command": "testify-ruby.debug.test",
+        "title": "Run Test"
       }
     ]
   },

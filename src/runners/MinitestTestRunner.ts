@@ -12,10 +12,6 @@ export class MinitestTestRunner implements ITestRunnerInterface {
     this.terminalProvider = terminalProvider;
   }
 
-  get binPath(): string {
-    return null;
-  }
-
   public runTest(
     rootPath: WorkspaceFolder,
     fileName: string,

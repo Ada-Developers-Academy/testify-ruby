@@ -9,7 +9,7 @@ async function runTest(
   testName: string
 ) {
   const relativeFilename = relative(rootPath.uri.path, fileName);
-  const testRunner = await getTestRunner(rootPath);
+  const testRunner = await getTestRunner();
 
   testRunner.runTest(rootPath, relativeFilename, testName);
 }
